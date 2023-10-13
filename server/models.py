@@ -23,7 +23,7 @@ class Question(db.Model, SerializerMixin):
 
     answer = db.relationship('Answer', back_populates='question')
 
-    serialize_rules = ('-answer', )
+    serialize_rules = ('-answer.questions', )
 
 # ==============================================ANSWERS=====================================================
 
@@ -32,10 +32,10 @@ class Answer(db.Model, SerializerMixin):
     __tablename__ = "answers"
 
     id = db.Column(db.Integer, primary_key=True, nullable=False)
-    answer_one = db.Column(db.String)
-    answer_two = db.Column(db.String)
-    answer_three = db.Column(db.String)
-    correct_answer = db.Column(db.String)
+    answer1 = db.Column(db.String)
+    answer2 = db.Column(db.String)
+    answer3 = db.Column(db.String)
+    correct = db.Column(db.String)
     question_id = db.Column(db.Integer, db.ForeignKey('questions.id'))
 
     question = db.relationship('Question', back_populates='answer')

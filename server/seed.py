@@ -48,10 +48,10 @@ if __name__ == '__main__':
 
         for _ in range(5):
             new_answers = Answer(
-                answer_one = faker.name(), 
-                answer_two = faker.name(),
-                answer_three = faker.name(),
-                correct_answer = faker.first_name(),
+                answer1 = faker.name(), 
+                answer2 = faker.name(),
+                answer3 = faker.name(),
+                correct = faker.first_name(),
                 question = random.choice(questions_list)
                 )
             

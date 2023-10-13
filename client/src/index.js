@@ -1,8 +1,51 @@
 import React from "react";
-import App from "./components/App";
 import "./index.css";
 import { createRoot } from "react-dom/client";
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import ReactDOM from 'react-dom/client'
 
-const container = document.getElementById("root");
-const root = createRoot(container);
-root.render(<App />);
+
+// components
+import App from "./components/App";
+import Signup from "./components/Signup"
+import QuizList from "./components/QuizList";
+import QuizCard from "./components/QuizCard";
+
+import Category from "./components/Category";
+// import Login from "./components/Login";
+
+// loaders 
+import {getQuiz, getPlayers,} from "./loaders"
+
+const router = createBrowserRouter([ 
+    { 
+        path: "/",
+        element: <App/>,
+        children: [ 
+            { 
+                index: true, 
+                element: <Signup/>
+            }, 
+            { 
+                path: "getQuiz",
+                element: <QuizList/>,
+                loader : getQuiz
+                
+            },
+            { 
+                path: "category",
+                element: <Category />,
+                loader: getQuiz
+            }
+            // { 
+            //     path: "login",
+            //     element: <Login/>,
+            //     loader: getPlayers
+            // }
+        ]
+    }
+])
+
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render( <RouterProvider router={router} /> );
