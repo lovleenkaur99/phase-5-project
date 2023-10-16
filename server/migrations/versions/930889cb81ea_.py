@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: e8f80f18bc18
+Revision ID: 930889cb81ea
 Revises: 
-Create Date: 2023-10-04 16:12:52.181817
+Create Date: 2023-10-13 15:20:35.659310
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'e8f80f18bc18'
+revision = '930889cb81ea'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -26,15 +26,18 @@ def upgrade():
     )
     op.create_table('questions',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('title', sa.String(), nullable=True),
+    sa.Column('question', sa.String(), nullable=True),
+    sa.Column('difficulty', sa.String(), nullable=True),
+    sa.Column('category', sa.String(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('answers',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('answer_one', sa.String(), nullable=True),
-    sa.Column('answer_two', sa.String(), nullable=True),
-    sa.Column('answer_three', sa.String(), nullable=True),
-    sa.Column('correct_answer', sa.String(), nullable=True),
+    sa.Column('answer1', sa.String(), nullable=True),
+    sa.Column('answer2', sa.String(), nullable=True),
+    sa.Column('answer3', sa.String(), nullable=True),
+    sa.Column('answer4', sa.String(), nullable=True),
+    sa.Column('correct', sa.String(), nullable=True),
     sa.Column('question_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['question_id'], ['questions.id'], name=op.f('fk_answers_question_id_questions')),
     sa.PrimaryKeyConstraint('id')

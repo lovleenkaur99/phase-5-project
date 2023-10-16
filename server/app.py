@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 # Standard library imports
+import requests
 
 # Remote library imports
 from flask import Flask, request, jsonify, session
@@ -9,61 +10,174 @@ from flask_migrate import Migrate
 from flask_bcrypt import Bcrypt
 from flask_cors import CORS
 from json import loads as unstringify_json
-
+from flask_sqlalchemy import SQLAlchemy  # Import SQLAlchemy
 
 # Local imports
 from config import app, db, api
 from models import Question, Answer, Player, Score 
 # Add your model imports
 
-app = Flask(__name__)
-app.secret_key = b'Y\xf1Xz\x00\xad|eQ\x80t \xca\x1a\x10K'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.json.compact = False
+# app = Flask(__name__)
+# app.secret_key = b'Y\xf1Xz\x00\xad|eQ\x80t \xca\x1a\x10K'
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
+# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+# app.json.compact = False
 
 cors = CORS(app, resources={r"/api/*": {"origins": "http://localhost:3001", "methods": ["GET"]}})
 
 bcrypt = Bcrypt(app)
 
-migrate = Migrate(app, db)
+# migrate = Migrate(app, db)
 
-db.init_app(app)
+# db.init_app(app)
 
 URL_PREFIX = '/api/v1'
 
 # Views go here!
 
-@app.route('/')
-def index():
-    return '<h1>Project Server</h1>'
+# @app.route('/')
+# def index():
+#     return '<h1>Project Server</h1>'
 
 # # ===========================================FETCHING DATA================================================
+# 
+
+@app.route('/', methods=['GET'])
+def get_data_from_api():
+    api_url = "https://opentdb.com/api.php?amount=10&category=31&type=multiple"
+    api_response = requests.get(api_url)
+    
+    if api_response.status_code == 200:
+        data = api_response.json()
+
+        questions = []
+
+        for question_data in data['results']:
+            # Extract the question text
+            question_text = question_data['question']
+
+            # Extract the correct answer
+            correct_answer = question_data['correct_answer']
+
+            # Extract the incorrect answers
+            incorrect_answers = question_data['incorrect_answers']
+
+            # Combine the correct and incorrect answers into a single list
+            all_answers = [correct_answer] + incorrect_answers
+
+            # Shuffle the answers to randomize their order
+            import random
+            random.shuffle(all_answers)
+
+            # Create a dictionary to represent the question
+            question = {
+                "question": question_text,
+                "answers": all_answers
+            }
+
+            questions.append(question)
+
+        # Return the list of questions with answers as a JSON response
+        return jsonify({"questions": questions})
+    else:
+        print("API request failed with status code:", api_response.status_code)
+        return "API request failed", 500
+
+
+
 
 # @app.route('/', methods=['GET'])
 # def get_data_from_api():
+#     api_url = "https://opentdb.com/api.php?amount=10&category=31&type=multiple"
+#     api_response = requests.get(api_url)
+#     print(api_response)
+
+#     if api_response.status_code == 200:
+#         data = api_response.json()
+
+#         questions = []
+#         answers = []
+
+#         for question_data in data['results']:
+#             print(question_data)
+#             question = Question(
+#                 question=question_data['question'],
+#                 category=question_data['category'],
+#                 difficulty=question_data['difficulty']
+#             )
+#             questions.append(question)
+#         for incorrect_answers in question_data:
+#             answer = Answer(
+#                 correct=incorrect_answers['correct_answer'],
+#                 answer1=incorrect_answers['incorrect_answers'],
+#                 answer2=incorrect_answers['incorrect_answers'],
+#                 answer3=incorrect_answers['incorrect_answers'],
+#                 answer4=incorrect_answers['correct_answer']
+#             )
+#             answers.append(answer)
+
+        
+#         db.session.add_all(questions)
+#         db.session.add_all(answers)
+#         db.session.commit()
+
+#         return jsonify(questions, answers)
+#     else:
+#         print("API request failed with status code:", api_response.status_code)
+#         return "API request failed", 500
+
+
+
+
+
+
+# from flask import Flask, request, jsonify
+# import requests
+
+# app = Flask(__name__)
+
+# @app.route('/', methods=['GET'])
+# def get_data_from_api():
+#     api_url = "https://opentdb.com/api.php?amount=10&category=31&type=multiple"
+#     api_response = requests.get(api_url)
+
+#     if api_response.status_code == 200:
+#         data = api_response.json()
+#         print(data)
+#         # Transform the data into the desired format
+#     questions = []
+#     for question_data in data['results']:
+#         print(question_data)
+#         question = Question(
+#             question = question_data['question'],
+#             category = question_data['category'],
+#             difficulty = question_data['difficulty']
+#         )
     
-#     try: 
-#         response1 = request.get("https://opentdb.com/api.php?amount=10&category=31&type=multiple")
-#         response2 = request.get("https://opentdb.com/api.php?amount=10&category=32&type=multiple")
-#         response3 = request.get("https://opentdb.com/api.php?amount=10&category=9&type=multiple")
+#     answers = []
+#     for answer_data in data['results']:
+#         answer = Answer(
+#             correct = answer_data['correct_answer'],
+#             answer1 = answer_data['incorrect_answers'],
+#             answer2 = answer_data['incorrect_answers'],
+#             answer3 = answer_data['incorrect_answers'],
+#             answer4 = answer_data['correct_answer']
+#         )
+#         questions.append(question)
+#         answers.append(answer)
+        
+#         db.session.add(questions)
+        
+#         db.session.commit()
 
-#         if response1.status_code == 200 and response2.status_code == 200 and response3.status_code == 200:
-#             data1 = response1.json()
-#             data2 = response2.json()
-#             data3 = response3.json()
+            
 
-#             combine_data = { 
-#                 "data_from_api1": data1,
-#                 "data_from_api2": data2,
-#                 "data_from_api3": data3
-#             }
+#         return jsonify(questions)
+#     else:
+#         print("API request failed with status code:", api_response.status_code)
+#         return "API request failed", 500
 
-#             return jsonify(combine_data)
-#         else: 
-#             return jsonify({"error": "Failed to fetch from one or more api"}), 500
-#     except Exception as e: 
-#         return jsonify({ "error" : str(e)}), 500
+
 
 
 # ============================================QUESTIONS===================================================
@@ -137,18 +251,18 @@ def create_player():
     except: 
         return {"error": "player not found"}
     
-# @app.post(URL_PREFIX + '/login')
-# def login():
+@app.get(URL_PREFIX + '/players')
+def login():
     
-#     json_data = request.json
+    json_data = request.json
 
-#     player= Player.Query.filter(Player.username == json_data['username']).first()
-#     if player and bcrypt.check_password_hash(Player.password_hash, json_data['password']): 
-#         session['player_id'] = player.id 
-#         return jsonify(player.to_dict()), 202
-#     else: 
-#         return jsonify({"message": "Invalid Username or password "}), 401
-# print("i just wanna see if this works")
+    player= Player.Query.filter(Player.username == json_data['username']).first()
+    if player and bcrypt.check_password_hash(Player.password_hash, json_data['password']): 
+        session['player_id'] = player.id 
+        return jsonify(player.to_dict()), 202
+    else: 
+        return jsonify({"message": "Invalid Username or password "}), 401
+
 
 # ===========================================SCORES========================================================
 

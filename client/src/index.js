@@ -12,10 +12,10 @@ import QuizList from "./components/QuizList";
 import QuizCard from "./components/QuizCard";
 
 import Category from "./components/Category";
-// import Login from "./components/Login";
+import Login from "./components/Login";
 
 // loaders 
-import {getQuiz, getPlayers,} from "./loaders"
+import {getQuiz, getPlayers} from "./loaders"
 
 const router = createBrowserRouter([ 
     { 
@@ -36,11 +36,16 @@ const router = createBrowserRouter([
                 path: "category",
                 element: <Category />,
                 loader: getQuiz
-            }
+            },
+            { 
+                path: "login",
+                element: <Login/>,
+                loader: getPlayers
+            } 
             // { 
-            //     path: "login",
-            //     element: <Login/>,
-            //     loader: getPlayers
+            //     path: "/",
+            //     element: <QuizList/>,
+            //     loader: getTrivia
             // }
         ]
     }

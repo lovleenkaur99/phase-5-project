@@ -10,27 +10,28 @@ export async function getQuiz() {
     return { allQuestions, allAnswers }
 }
 
+// export async function getTrivia() { 
+//     const answerResponse = await fetch('http://localhost:4000/trivia')
+//     const allTrivia = await answerResponse.json()
 
-// export async function getAnswers() { 
+//     return {allTrivia}
+// } 
+// export async function getTrivia() { 
+//     const answerResponse = await fetch('https://opentdb.com/api.php?amount=10&category=31&type=multiple')
+//     const allTrivia = await answerResponse.json()
 
-//     console.log(allAnswers)
+//     return {allTrivia}
+// } 
 
-//     return {allAnswers}
-// }
 
-// export async function getQuiz(){
 
-//     const allAnswers = await getAnswers()
-//     const allQuestions = await getQuestions()
-
-//     return {allAnswers, allQuestions}
-
-// }
 
 export async function getPlayers() { 
     const answerResponse = await fetch('http://localhost:5555/api/v1/players')
     const allplayers = await answerResponse.json()
 
     return {allplayers}
-}
+} 
+
+
 

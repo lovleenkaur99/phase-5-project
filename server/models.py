@@ -35,6 +35,7 @@ class Answer(db.Model, SerializerMixin):
     answer1 = db.Column(db.String)
     answer2 = db.Column(db.String)
     answer3 = db.Column(db.String)
+    answer4 = db.Column(db.String)
     correct = db.Column(db.String)
     question_id = db.Column(db.Integer, db.ForeignKey('questions.id'))
 

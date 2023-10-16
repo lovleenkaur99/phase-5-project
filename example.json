@@ -1,0 +1,125 @@
+{
+    "response_code": 0,
+    "results": [
+        {
+            "category": "Entertainment: Japanese Anime & Manga",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "Who was given the title &quot;Full Metal&quot; in the anime series &quot;Full Metal Alchemist&quot;?",
+            "correct_answer": "Edward Elric",
+            "incorrect_answers": [
+                "Alphonse Elric",
+                "Van Hohenheim",
+                "Izumi Curtis"
+            ]
+        },
+        {
+            "category": "Entertainment: Japanese Anime & Manga",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "What is the last name of Edward and Alphonse in the Fullmetal Alchemist series.",
+            "correct_answer": "Elric",
+            "incorrect_answers": [
+                "Ellis",
+                "Eliek",
+                "Elwood"
+            ]
+        },
+        {
+            "category": "Entertainment: Japanese Anime & Manga",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "The name of Junko Enoshima&#039;s imposter at the beginning of Danganronpa: Trigger Happy Havoc is?",
+            "correct_answer": "Mukuro Ikusaba",
+            "incorrect_answers": [
+                "Ryota Mitarai",
+                "Ultimate Imposter",
+                "Komaru Naegi"
+            ]
+        },
+        {
+            "category": "Entertainment: Japanese Anime & Manga",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "In the anime Black Butler, who is betrothed to be married to Ciel Phantomhive?",
+            "correct_answer": "Elizabeth Midford",
+            "incorrect_answers": [
+                "Rachel Phantomhive",
+                "Alexis Leon Midford",
+                "Angelina Dalles"
+            ]
+        },
+        {
+            "category": "Entertainment: Japanese Anime & Manga",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "In &quot;A Certain Scientific Railgun&quot;, how many &quot;sisters&quot; did Accelerator have to kill to achieve the rumored level 6?",
+            "correct_answer": "20,000",
+            "incorrect_answers": [
+                "128",
+                "10,000",
+                "5,000"
+            ]
+        },
+        {
+            "category": "Entertainment: Japanese Anime & Manga",
+            "type": "multiple",
+            "difficulty": "medium",
+            "question": "Which of the following manga have the most tankouban volumes?",
+            "correct_answer": "Golgo 13",
+            "incorrect_answers": [
+                "JoJo&#039;s Bizarre Adventure",
+                "Detective Conan",
+                "One Piece"
+            ]
+        },
+        {
+            "category": "Entertainment: Japanese Anime & Manga",
+            "type": "multiple",
+            "difficulty": "hard",
+            "question": "In what year did the manga &quot;Ping Pong&quot; begin serialization?",
+            "correct_answer": "1996",
+            "incorrect_answers": [
+                "2014",
+                "2010",
+                "2003"
+            ]
+        },
+        {
+            "category": "Entertainment: Japanese Anime & Manga",
+            "type": "multiple",
+            "difficulty": "hard",
+            "question": "What is the name of the school in the anime and manga &quot;Gosick&quot;?",
+            "correct_answer": "St. Marguerite",
+            "incorrect_answers": [
+                "St. Augustine",
+                "St. Mary",
+                "St. Bernadette"
+            ]
+        },
+        {
+            "category": "Entertainment: Japanese Anime & Manga",
+            "type": "multiple",
+            "difficulty": "hard",
+            "question": "Which studio animated Afro Samurai?",
+            "correct_answer": "Gonzo",
+            "incorrect_answers": [
+                "Kyoto Animation",
+                "xebec",
+                "Production I.G"
+            ]
+        },
+        {
+            "category": "Entertainment: Japanese Anime & Manga",
+            "type": "multiple",
+            "difficulty": "medium",
+            "question": "In &quot;JoJo&#039;s Bizzare Adventure: Stardust Crusaders&quot;, what is the last name of the protagonist Jotaro?",
+            "correct_answer": "Kujo",
+            "incorrect_answers": [
+                "Cujoh",
+                "Joestar",
+                "Higashikata"
+            ]
+        }
+    ]
+}

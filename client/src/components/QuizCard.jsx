@@ -1,94 +1,108 @@
-import { useState } from "react"
+import React, { useState } from 'react';
+import _unescape from "underscore/modules/unescape.js"
+import parse from "html-react-parser"
 
-
-function QuizCard({questionObj}){
-
-
-    const [correctAnswer, setCorrectAnswer] = useState(false)
-
+function QuizCard({ questionObj }) {
+    const [isCorrect, setIsCorrect] = useState(false);
+    const [selectedAnswer, setSelectedAnswer] = useState(null);
+    
 
     
+    const question = _unescape(questionObj.question )
+    const decodedQuestion = () =>{ 
+        const p = document.createElement('p')
+        p.innerHTML = questionObj.question
+        return p 
+    }
+    
+    const mappedAnswers = questionObj.answer.map((answer) => (
+        
+        <ul key={answer.id} onClick={handleCorrectAnswer} >
+            <li >{answer.answer1}</li>
+            <li>{answer.answer2}</li>
+            <li>{answer.answer3}</li>
+            <li>{answer.answer4}</li>
+        </ul>
+    ))
+
+    function handleCorrectAnswer(answer) {
+        if (!selectedAnswer) {
+        setSelectedAnswer(isCorrect);
+
+        if (isCorrect === answer.correct) {
+            setIsCorrect(true);
+            console.log("I am Correct!");
+        } else {
+            setIsCorrect(false);
+            console.log("I am not correct!");
+        }
+        }
+    }
+        
+
     return (
-    <div>
+        <div>
         <h5>Difficulty: {questionObj.difficulty}</h5>
-        <h3>{questionObj.question}</h3>
-
-        <button >{questionObj.answer.answer1}</button>
-        <button >{questionObj.answer.answer2}</button>
-        <button >{questionObj.answer.answer3}</button>
-        <button >{questionObj.answer.correct}</button>
-    </div>
-    )
-    
+        <h3>{parse(questionObj.question)}</h3>
+        
+        {mappedAnswers}
+        </div>
+    );
 }
 
-export default QuizCard
+export default QuizCard;
 
 
-// import React, { useState, useEffect } from 'react';
 
-// function QuizCard({ questionObj, answerObj }) {
-//     const [shuffledAnswers, setShuffledAnswers] = useState([]);
-//     const [selectedAnswer, setSelectedAnswer] = useState(null);
-//     const [isCorrect, setIsCorrect] = useState(null);
+// import { useState } from "react"
 
-//   // Shuffle the answer choices when questionObj or answerObj changes
-//     useEffect(() => {
-//     const answers = [answerObj.answer1, answerObj.answer2, answerObj.answer3, answerObj.correct];
-//     const shuffled = shuffleArray(answers);
-//     setShuffledAnswers(shuffled);
-//     }, [questionObj, answerObj]);
 
-//     const shuffleArray = (array) => {
-//         const shuffled = [...array];
-//         for (let i = shuffled.length - 1; i > 0; i--) {
-//         const j = Math.floor(Math.random() * (i + 1));
-//         [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+// function QuizCard({questionObj}){
+
+//     const [isCorrect, setIsCorrect] = useState(false)
+//     const [correctAnswer, setCorrectAnswer] = useState(false)
+//     const [selectedAnswer, setSelectedAnswer] = useState(null)
+
+//     function handleCorrectanswer(e){ 
+
+//         if (!correctAnswer) { 
+//             const selectedText = e.target.textContent
+//             setSelectedAnswer(selectedAnswer)
+
+//             if(questionObj.correct === selectedText){ 
+//                 setCorrectAnswer(true)
+//                 setIsCorrect(true)
+//                 console.log("I am Correct!")
+//             } else { 
+//                 setCorrectAnswer(true)
+//                 setIsCorrect(false)
+//                 console.log("I am not correct!")
+//             }
+//         }
+        
 //     }
-//     return shuffled;
-//     };
-
-//     const handleAnswerClick = (selected) => {
-//     setSelectedAnswer(selected);
-//     setIsCorrect(selected === answerObj.correct);
-//     };
     
 //     return (
-//         <div>
-//             <h5>Difficulty: {questionObj.difficulty}</h5>
+//     <div>
+//         <h5>Difficulty: {questionObj.difficulty}</h5>
+//         <h3>{questionObj.question}</h3>
+//         <li onClick={handleCorrectanswer}>
+//         <button >answer1{questionObj.answer1}</button>
+//         <button >answer2{questionObj.answer2}</button>
+//         <button >answer3{questionObj.answer3}</button>
+//         <button >correct{questionObj.correct}</button>
+//         </li>
+//     </div>
+//     )
+    
+// }
 
-//             <h3>{questionObj.question}</h3>
-//             <ul>
-//             {shuffledAnswers.map((answer, index) => (
-//             <li key={index}>
-//                 <button
-//                 onClick={() => handleAnswerClick(answer)}
-//                 style={{
-//                     backgroundColor:
-//                     selectedAnswer === answer
-//                         ? isCorrect
-//                         ? 'green'
-//                         : 'red'
-//                         : 'white',
-//                 }}
-//                 disabled={selectedAnswer !== null}
-//                 >
-//                 {answer}
-//                 </button>
-//             </li>
-//             ))}
-//             </ul>
-//             {selectedAnswer !== null && (
-//             <p>
-//             {isCorrect ? 'Correct!' : 'Incorrect!'} The correct answer is{' '}
-//             {answerObj.correct}.
-//             </p>
-//         )}
-//         </div>
-//     );
-//     }
+// export default QuizCard
 
-// export default QuizCard;
+
+
+
+
 
 
 

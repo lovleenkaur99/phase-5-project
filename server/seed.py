@@ -26,6 +26,7 @@ if __name__ == '__main__':
         Player.query.delete()
 
         Score.query.delete()
+        db.session.commit()
 
         print('Creating new questions ...')
 
