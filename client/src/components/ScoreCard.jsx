@@ -1,7 +1,8 @@
-function ScoreCard(){ 
+function ScoreCard({scoreObj}){ 
     return ( 
-        <div>
-
+        <div className="score-display">
+            <button> Quit </button>
+            <button> Start Over </button>
         </div>
     )
 }

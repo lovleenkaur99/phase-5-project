@@ -9,13 +9,13 @@ import ReactDOM from 'react-dom/client'
 import App from "./components/App";
 import Signup from "./components/Signup"
 import QuizList from "./components/QuizList";
-import QuizCard from "./components/QuizCard";
-
+import ScoreList from "./components/ScoreCard";
 import Category from "./components/Category";
 import Login from "./components/Login";
 
 // loaders 
-import {getQuiz, getPlayers} from "./loaders"
+import {getQuiz, getPlayers, getScores} from "./loaders"
+import ScoreCard from "./components/ScoreCard";
 
 const router = createBrowserRouter([ 
     { 
@@ -41,12 +41,12 @@ const router = createBrowserRouter([
                 path: "login",
                 element: <Login/>,
                 loader: getPlayers
-            } 
-            // { 
-            //     path: "/",
-            //     element: <QuizList/>,
-            //     loader: getTrivia
-            // }
+            },
+            { 
+                path: "/score",
+                element: <ScoreList/>,
+                loader: getScores
+            }
         ]
     }
 ])

@@ -51,7 +51,7 @@ function Login(){
 
     const navigate = useNavigate()
     return ( 
-        <div>
+        <div className="login-display">
             <form onSubmit={handleLogin}>
                 <label htmlFor="username">Username:</label>
                 <input type="text" username="username" onChange={handleChangeUsername}></input>

@@ -3,10 +3,10 @@ import ScoreCard from "./ScoreCard"
 
 function ScoreList(){ 
 
-    const {} = useLoaderData()
+    const { allScores } = useLoaderData()
     return ( 
         <div>
-            <ScoreCard/>
+            {allScores.map( scores =>  <ScoreCard key={scores.id} scoresobj={scores}/>)}
         </div>
     )
 }

@@ -5,26 +5,8 @@ export async function getQuiz() {
     const answerResponse = await fetch('http://localhost:5555/api/v1/answers')
     const allAnswers = await answerResponse.json()
     
-
-
     return { allQuestions, allAnswers }
 }
-
-// export async function getTrivia() { 
-//     const answerResponse = await fetch('http://localhost:4000/trivia')
-//     const allTrivia = await answerResponse.json()
-
-//     return {allTrivia}
-// } 
-// export async function getTrivia() { 
-//     const answerResponse = await fetch('https://opentdb.com/api.php?amount=10&category=31&type=multiple')
-//     const allTrivia = await answerResponse.json()
-
-//     return {allTrivia}
-// } 
-
-
-
 
 export async function getPlayers() { 
     const answerResponse = await fetch('http://localhost:5555/api/v1/players')
@@ -32,6 +14,14 @@ export async function getPlayers() {
 
     return {allplayers}
 } 
+
+export async function getScores() { 
+    const answerResponse = await fetch('http://localhost:5555/api/v1/scores')
+    const allScores = await answerResponse.json()
+
+    return {allScores}
+} 
+
 
 
 

@@ -1,6 +1,7 @@
 function EndPage(){ 
     return ( 
-        <div>
+        <div className="endpage-display">
+            
 
         </div>
     )

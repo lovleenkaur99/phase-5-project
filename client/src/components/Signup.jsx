@@ -56,7 +56,7 @@ function Signup(){
     }
     
     return ( 
-        <div>
+        <div className="signup-display">
 
             <form onSubmit={handleSubmit} > 
                 <label htmlFor="username">Username:</label>

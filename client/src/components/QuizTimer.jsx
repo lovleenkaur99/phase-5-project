@@ -29,8 +29,8 @@ function QuizTimer({duration, handleTimeUp }){
     }, [counter])
     
     return ( 
-        <div>
-            <div style={{
+        <div className="timer-display">
+            <div className="progess" style={{
                 width: `${progress}%`,
                 backgroundColor: `${ 
                     progress < 40 
