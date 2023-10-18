@@ -23,7 +23,7 @@ function QuizList() {
             
             {mappedQuestions}
             
-            <Category setFilterCategory={setFilterCategory}/>
+            {/* <Category setFilterCategory={setFilterCategory}/> */}
         </div>
     )
 }

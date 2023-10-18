@@ -44,45 +44,36 @@ URL_PREFIX = '/api/v1'
 
 @app.route('/', methods=['GET'])
 def get_data_from_api():
-    api_url = "https://opentdb.com/api.php?amount=10&category=31&type=multiple"
-    api_response = requests.get(api_url)
-    
-    if api_response.status_code == 200:
-        data = api_response.json()
-        print(data)
-        questions = []
+    questions = []
 
-        for question_data in data["results"]:
-            # Extract the question text
-            
-            question = question_data['question']
+    for question_data in data["results"]:
+        # Extract the question text
+        
+        question = question_data['question']
 
-            # Extract the correct answer
-            correct = question_data['correct_answer']
+        # Extract the correct answer
+        correct = question_data['correct_answer']
 
-            # Extract the incorrect answers
-            incorrect_answers = question_data['incorrect_answers']
+        # Extract the incorrect answers
+        incorrect_answers = question_data['incorrect_answers']
 
-            # Combine the correct and incorrect answers into a single list
-            all_answers = [correct] + incorrect_answers
+        # Combine the correct and incorrect answers into a single list
+        all_answers = [correct] + incorrect_answers
 
-            # Shuffle the answers to randomize their order
-            import random
-            random.shuffle(all_answers)
+        # Shuffle the answers to randomize their order
+        import random
+        random.shuffle(all_answers)
 
-            # Create a dictionary to represent the question
-            question = {
-                "question": question,
-                "answers": all_answers
-            }
+        # Create a dictionary to represent the question
+        question = {
+            "question": question,
+            "answers": all_answers
+        }
 
-            questions.append(question)
+        questions.append(question)
 
-        # Return the list of questions with answers as a JSON response
-        return jsonify({"questions": questions})
-    else:
-        print("API request failed with status code:", api_response.status_code)
-        return "API request failed", 500
+    # Return the list of questions with answers as a JSON response
+    return jsonify({"questions": questions})
 
 
 

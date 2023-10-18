@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import _unescape from "underscore/modules/unescape.js"
 import parse from "html-react-parser"
@@ -29,10 +30,11 @@ function QuizCard({ questionObj }) {
             <li >{answer.answer3}</li>
             <li >{answer.answer4}</li>
         </ul>
-    ))
 
+    ))
+    
     function handleCorrectAnswer(e, answer) {
-        
+
         if (answer.correct === e.target.value) { 
             isCorrect(true)
             selectedAnswer(true)
@@ -42,10 +44,11 @@ function QuizCard({ questionObj }) {
             selectedAnswer(true)
             console.log("I am not correct!")
         }
+        console.log(answer.correct)
     }
     
     const handleTimeUp = () => { 
-        alert("time is up")
+        
     }
 
 
@@ -56,7 +59,7 @@ function QuizCard({ questionObj }) {
             <h5>Difficulty: {questionObj.difficulty}</h5> <br/>
             <h3>{parse(questionObj.question)}</h3> <br/>
             {mappedAnswers}
-            <button>Next</button>
+            {/* <button>Next</button> */}
         </div>
     );
 }

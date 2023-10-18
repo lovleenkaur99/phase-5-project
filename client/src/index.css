@@ -44,7 +44,7 @@ li {
     top: 0;
     left: 0;
     width: 100%;
-    border: 1px solid black;
+    border-bottom: 1px solid black;
 
 }
 .progress { 

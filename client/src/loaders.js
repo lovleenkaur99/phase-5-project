@@ -1,8 +1,8 @@
 export async function getQuiz({params}) {
-    const questionsResponse = await fetch(`http://localhost:5555/api/v1/questions`)
+    const questionsResponse = await fetch(`http://localhost:5555/api/v1/questions${params.id}`)
     const allQuestions = await questionsResponse.json()
 
-    const answerResponse = await fetch(`http://localhost:5555/api/v1/answers`)
+    const answerResponse = await fetch(`http://localhost:5555/api/v1/answers${params.id}`)
     const allAnswers = await answerResponse.json()
     
     return { allQuestions, allAnswers }
