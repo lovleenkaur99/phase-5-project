@@ -21,9 +21,6 @@ function Category({setFilterCategory}){
                 <option value="Japanese Manga and Anime">Japanese Manga and Anime</option>
                 <option value="General Knowledge">General Knowledge</option>
             </select><br/>
-
-            
-            
         </div>
     )
 }

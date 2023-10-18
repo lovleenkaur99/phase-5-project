@@ -42,11 +42,11 @@ const router = createBrowserRouter([
                 element: <Login/>,
                 loader: getPlayers
             },
-            { 
-                path: "/score",
-                element: <ScoreList/>,
-                loader: getScores
-            }
+            // { 
+            //     path: "/score",
+            //     element: <Score/>,
+            //     loader: getScores
+            // }
         ]
     }
 ])

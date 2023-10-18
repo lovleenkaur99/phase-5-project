@@ -46,10 +46,11 @@ li {
     width: 100%;
     border: 1px solid black;
 
-    .progress { 
-        height: 5px;
-        transition-duration: 1s;
-        width: 50%;
-        background: red;
-    }
+}
+.progress { 
+    height: 5px;
+    transition-duration: 1s;
+    width: 0;
+    transition-timing-function: linear;
+    background: red;
 }

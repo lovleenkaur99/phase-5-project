@@ -23,7 +23,7 @@ from models import Question, Answer, Player, Score
 # app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 # app.json.compact = False
 
-cors = CORS(app, resources={r"/api/*": {"origins": "http://localhost:3001", "methods": ["GET"]}})
+cors = CORS(app, resources={r"/api/*": {"origins": "http://localhost:4000", "methods": ["GET"]}})
 
 bcrypt = Bcrypt(app)
 
@@ -49,21 +49,22 @@ def get_data_from_api():
     
     if api_response.status_code == 200:
         data = api_response.json()
-
+        print(data)
         questions = []
 
-        for question_data in data['results']:
+        for question_data in data["results"]:
             # Extract the question text
-            question_text = question_data['question']
+            
+            question = question_data['question']
 
             # Extract the correct answer
-            correct_answer = question_data['correct_answer']
+            correct = question_data['correct_answer']
 
             # Extract the incorrect answers
             incorrect_answers = question_data['incorrect_answers']
 
             # Combine the correct and incorrect answers into a single list
-            all_answers = [correct_answer] + incorrect_answers
+            all_answers = [correct] + incorrect_answers
 
             # Shuffle the answers to randomize their order
             import random
@@ -71,7 +72,7 @@ def get_data_from_api():
 
             # Create a dictionary to represent the question
             question = {
-                "question": question_text,
+                "question": question,
                 "answers": all_answers
             }
 

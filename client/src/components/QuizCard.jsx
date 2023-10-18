@@ -6,7 +6,6 @@ import QuizTimer from './QuizTimer';
 function QuizCard({ questionObj }) {
     const [isCorrect, setIsCorrect] = useState(false);
     const [selectedAnswer, setSelectedAnswer] = useState(null);
-    const [currentQuestion, setCurrentQuestion] = useState(0)
     const [result, setResult] = useState({ 
         score: 0, 
         correctAnswers: 0,
@@ -20,16 +19,7 @@ function QuizCard({ questionObj }) {
         return p 
     }
     
-    const onClickNext = () => { 
-        setCurrentQuestion((prev) => prev + 1)
-        setResult((prev) => 
-        setResult ? { 
-            score: prev.score + 5,
-            correctAnswers: prev.correctAnswers + 1,
-        }
-        : { ...prev, wrongAnswers: prev.wrongAnswers + 1 }
-        
-    )}
+    
     
     const mappedAnswers = questionObj.answer.map((answer) => (
         
@@ -43,7 +33,7 @@ function QuizCard({ questionObj }) {
 
     function handleCorrectAnswer(e, answer) {
         
-        if (answer.correct === e.target.textContent) { 
+        if (answer.correct === e.target.value) { 
             isCorrect(true)
             selectedAnswer(true)
             console.log("I am correct!!")
@@ -55,20 +45,18 @@ function QuizCard({ questionObj }) {
     }
     
     const handleTimeUp = () => { 
-
+        alert("time is up")
     }
-    
-    const {question, difficulty} = questionObj
-    
+
 
     return (
         <div className='questions-display'>
             <QuizTimer duration={10} handleTimeUp={handleTimeUp} />
             
-            <h5>Difficulty: {difficulty}</h5> <br/>
-            <h3>{parse(question)}</h3> <br/>
-        
+            <h5>Difficulty: {questionObj.difficulty}</h5> <br/>
+            <h3>{parse(questionObj.question)}</h3> <br/>
             {mappedAnswers}
+            <button>Next</button>
         </div>
     );
 }
