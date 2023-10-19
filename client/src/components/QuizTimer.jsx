@@ -36,8 +36,8 @@ function QuizTimer({duration, handleTimeUp }){
                     progress < 40 
                     ? "lightgreen"
                     : progress > 70
-                    ? "orange"
-                    : "red"
+                    ? "darkgreen"
+                    : "green"
                 }`
             }}> 
 

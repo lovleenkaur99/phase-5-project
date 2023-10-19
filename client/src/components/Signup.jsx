@@ -58,13 +58,13 @@ function Signup(){
     return ( 
         <div className="signup-display">
 
-            <form onSubmit={handleSubmit} > 
-                <label htmlFor="username">Username:</label>
-                <input type="text" username="username" onChange={handleChangeUsername} value={username} ></input>
-                <label htmlFor="password">Password:</label>
+            <form className="form" onSubmit={handleSubmit} > 
+                <label htmlFor="username">Username:</label><br/>
+                <input type="text" username="username" onChange={handleChangeUsername} value={username} ></input><br/>
+                <label htmlFor="password">Password:</label><br/>
                 <input type="text" password="password" onChange={handleChangePassword} value={password}></input><br/>
-                <button  >Signup</button><br/>
-                <button onClick={() => navigate("/login")}>Login</button>
+                <button className="signup-button"  >Signup</button><br/>
+                <button className="login-button" onClick={() => navigate("/login")}>Login</button>
             </form>
             
         </div>
