@@ -31,8 +31,8 @@ if __name__ == '__main__':
         # NOTE: API Capped at 50 Objects
         num_quizzes = 50
         CATEGORICAL_MAPPER = {
-            # "General Knowledge": 9,
-            # "Science: Gadgets": 30, # TODO: Check why not populating.
+            "General Knowledge": 9,
+            "Science: Gadgets": 30, # TODO: Check why not populating.
             "Entertainment: Japanese Anime & Manga": 31
         }
         for category, code in CATEGORICAL_MAPPER.items():

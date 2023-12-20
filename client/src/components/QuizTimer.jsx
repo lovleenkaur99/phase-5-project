@@ -5,6 +5,7 @@ function QuizTimer({duration, handleTimeUp }){
 
     const [counter, setCounter] = useState(0)
     const [progress, setprogress] = useState(0)
+    const [gameover, setGameOver] = useState(false)
     const counterRef = useRef()
 
     useEffect(() => { 
@@ -20,6 +21,7 @@ function QuizTimer({duration, handleTimeUp }){
 
         if (counter === duration) { 
             clearInterval(counterRef.current)
+            setGameOver(true)
 
             setTimeout(() => { 
                 handleTimeUp()
@@ -34,10 +36,10 @@ function QuizTimer({duration, handleTimeUp }){
                 width: `${progress}%`,
                 backgroundColor: `${ 
                     progress < 40 
-                    ? "lightgreen"
+                    ? "green"
                     : progress > 70
-                    ? "darkgreen"
-                    : "green"
+                    ? "red"
+                    : "orange"
                 }`
             }}> 
 

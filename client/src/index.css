@@ -1,4 +1,6 @@
 
+/* try fix some of the css or maybe try to get a css package priority last  */
+
 body { 
     background-color: #072a39;
     font-family: 'Courier New', Courier, monospace;
@@ -51,11 +53,12 @@ li {
 }
 
 .timer-display { 
-    position: absolute;
+    position: static;
     top: 0;
     left: 0;
     width: 100%;
-    border-bottom: 1px solid black;
+    border: 1px solid black;
+    
 }
 .progess { 
     height: 15px;
@@ -181,6 +184,7 @@ li {
     font-weight: 300;
     display: flex;
     justify-content: center;
+    position: static;
 }
 
 .start-over { 
@@ -195,5 +199,14 @@ li {
     font-weight: 300;
     display: flex;
     justify-content: center;
+    position: static;
+}
+
+h2 { 
+    color: #eaece6;
+    text-align: left;
+    font-size: 40px;
+    border-bottom: 1px solid #eaece6;
+
 }
 
