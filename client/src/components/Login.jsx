@@ -56,7 +56,7 @@ function Login(){
                 <label htmlFor="username">Username:</label><br/>
                 <input type="text" username="username" onChange={handleChangeUsername}></input><br/>
                 <label htmlFor="password">Password:</label><br/>
-                <input type="text" password="password" onChange={handleChangePassword} ></input><br/>
+                <input type="password" password="password" onChange={handleChangePassword} ></input><br/>
                 <button className="login-button2" >Login</button><br/>
                 <button className="logout" onClick={() => navigate("/")}>Logout</button>
             </form>
